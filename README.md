@@ -174,4 +174,4 @@ Perbandingan antara Linear Regression dan Random Forest Regression dilakukan unt
 
 ## Penulis
 
-**Mohammad Rohmad Nur Khoirofiq**
+**Mohammad Rohmad Nurkhoirofiq**
