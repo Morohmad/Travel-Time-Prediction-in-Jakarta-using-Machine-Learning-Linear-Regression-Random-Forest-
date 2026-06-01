@@ -1,69 +1,177 @@
 # Travel Time Prediction in Jakarta using Machine Learning (Linear Regression & Random Forest)
 
-## Overview
+# Prediksi Harga Rumah Menggunakan Machine Learning
 
-Project ini dibuat dalam rangka kompetisi **Yandex x Komdigi DTS 2025** dengan tujuan memprediksi waktu tempuh perjalanan di Jakarta menggunakan pendekatan machine learning.
+## Deskripsi Proyek
 
-Pada penelitian ini digunakan beberapa algoritma regresi untuk mempelajari pola perjalanan berdasarkan data yang tersedia dan membandingkan performa model dalam menghasilkan prediksi waktu tempuh.
+Proyek ini dibuat dalam rangka mengikuti **Kompetisi Machine Learning Yandex x Komdigi Digital Talent Scholarship (DTS) 2025** yang diselenggarakan oleh **Yandex** bekerja sama dengan **Kementerian Komunikasi dan Digital Republik Indonesia (Komdigi)**.
 
-## Objectives
+Tujuan proyek ini adalah membangun model machine learning untuk memprediksi **harga rumah (house price prediction)** berdasarkan karakteristik properti yang tersedia pada dataset.
 
-* Menganalisis data perjalanan.
-* Membangun model prediksi waktu tempuh.
-* Membandingkan performa Linear Regression dan Random Forest.
-* Mengevaluasi hasil prediksi menggunakan metrik yang sesuai.
+---
+
+## Tujuan
+
+* Melakukan eksplorasi dan analisis data properti.
+* Melakukan pembersihan dan praproses data.
+* Membangun model prediksi harga rumah.
+* Membandingkan performa algoritma Linear Regression dan Random Forest Regression.
+* Menghasilkan prediksi harga rumah pada data uji.
+
+---
 
 ## Dataset
 
-Dataset yang digunakan terdiri dari data perjalanan yang digunakan sebagai data pelatihan dan data pengujian.
+Dataset terdiri dari data properti untuk pelatihan dan pengujian model.
 
-File yang tersedia:
+### File Dataset
+
+* `train_sample.csv.csv` → Data pelatihan
+* `test_sample.csv.csv` → Data pengujian
+
+### Variabel Target
+
+| Variabel | Keterangan                       |
+| -------- | -------------------------------- |
+| `price`  | Harga rumah yang akan diprediksi |
+
+### Variabel Fitur
+
+| Variabel     | Keterangan                     |
+| ------------ | ------------------------------ |
+| `sold_date`  | Tanggal penjualan properti     |
+| `sold_price` | Harga jual sebelumnya          |
+| `year_built` | Tahun pembangunan rumah        |
+| `garage`     | Jumlah garasi                  |
+| `sqft`       | Luas bangunan (square feet)    |
+| `type`       | Jenis properti                 |
+| `transport`  | Akses transportasi             |
+| `services`   | Ketersediaan layanan/fasilitas |
+| `beds`       | Jumlah kamar tidur             |
+| `floors`     | Jumlah lantai                  |
+| `baths`      | Jumlah kamar mandi             |
+| `lot_sqft`   | Luas tanah (square feet)       |
+
+---
+
+## Tahapan Pengerjaan
+
+### 1. Data Understanding
+
+Melakukan pemeriksaan struktur data, tipe data, serta identifikasi nilai yang hilang (missing values).
+
+### 2. Data Cleaning
+
+Tahap pembersihan data meliputi:
+
+* Menangani missing values.
+* Menghapus data yang tidak relevan.
+* Memastikan format data sesuai untuk pemodelan.
+
+### 3. Exploratory Data Analysis (EDA)
+
+Analisis dilakukan untuk memahami pola data melalui:
+
+* Visualisasi hubungan luas bangunan terhadap harga rumah.
+* Distribusi jumlah kamar tidur.
+* Identifikasi outlier menggunakan boxplot.
+
+### 4. Penanganan Outlier
+
+Data dengan jumlah kamar tidur yang sangat ekstrem dihapus untuk mengurangi pengaruh outlier terhadap model.
+
+### 5. Feature Engineering
+
+#### Encoding Variabel Kategorikal
+
+Variabel kategorikal diubah menjadi numerik menggunakan teknik **One-Hot Encoding**.
+
+#### Normalisasi Data
+
+Fitur numerik dinormalisasi menggunakan **MinMaxScaler** agar berada pada rentang yang seragam.
+
+### 6. Pelatihan Model
+
+Dua algoritma regresi digunakan:
+
+#### Linear Regression
+
+Digunakan sebagai model dasar untuk mempelajari hubungan linier antara fitur dan harga rumah.
+
+#### Random Forest Regression
+
+Metode ensemble berbasis kumpulan decision tree yang mampu menangani hubungan nonlinier dan meningkatkan akurasi prediksi.
+
+---
+
+## Alur Kerja
 
 ```text
-train_sample.csv.csv
-test_sample.csv.csv
+Data Understanding
+        ↓
+Data Cleaning
+        ↓
+Exploratory Data Analysis
+        ↓
+Penanganan Outlier
+        ↓
+Encoding & Scaling
+        ↓
+Training Model
+        ↓
+Evaluasi Model
+        ↓
+Prediksi Data Uji
 ```
 
-## Machine Learning Models
+---
 
-Model yang digunakan dalam project ini:
+## Metode Evaluasi
 
-* Linear Regression
-* Random Forest Regressor
+Kinerja model dievaluasi menggunakan:
 
-Kedua model digunakan untuk membandingkan kemampuan prediksi terhadap data perjalanan dan melihat model mana yang memberikan performa yang lebih baik.
+* Mean Absolute Error (MAE)
+* Mean Squared Error (MSE)
+* Root Mean Squared Error (RMSE)
 
-## Workflow
+Metrik tersebut digunakan untuk mengukur seberapa dekat hasil prediksi terhadap nilai sebenarnya.
 
-1. Data Understanding
-2. Data Cleaning
-3. Feature Selection
-4. Data Preprocessing
-5. Model Training
-6. Model Evaluation
-7. Prediction and Analysis
+---
 
-## Technologies
+## Teknologi yang Digunakan
 
 * Python
 * Pandas
 * NumPy
+* Matplotlib
+* Seaborn
 * Scikit-Learn
 * Jupyter Notebook
-* Matplotlib
 
-## Project Structure
+---
+
+## Struktur Proyek
 
 ```text
 .
 ├── train_sample.csv.csv
 ├── test_sample.csv.csv
 ├── upload.ipynb
+├── submission.csv
+├── submission1.csv
 └── README.md
 ```
 
-## Results
+---
 
-Hasil eksperimen menunjukkan bahwa model machine learning dapat digunakan untuk memprediksi waktu tempuh perjalanan berdasarkan pola data yang tersedia. Performa setiap model dibandingkan untuk melihat tingkat akurasi dan kemampuan generalisasi terhadap data pengujian.
-Information Systems
-Universitas Sriwijaya
+## Hasil
+
+Model machine learning berhasil digunakan untuk memprediksi harga rumah berdasarkan karakteristik properti seperti luas bangunan, jumlah kamar tidur, jumlah kamar mandi, luas tanah, dan fitur lainnya.
+
+Perbandingan antara Linear Regression dan Random Forest Regression dilakukan untuk mengetahui model yang memberikan performa terbaik pada dataset yang digunakan.
+
+---
+
+## Penulis
+
+**Mohammad Rohmad Nur Khoirofiq**
