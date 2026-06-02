@@ -1,5 +1,3 @@
-# Travel Time Prediction in Jakarta using Machine Learning (Linear Regression & Random Forest)
-
 # Prediksi Harga Rumah Menggunakan Machine Learning
 
 ## Deskripsi Proyek
